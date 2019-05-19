@@ -93,7 +93,7 @@ createlayer(1);
 
 // cortixo object
 
-window.cortixo = {
+var cortixo = {
   setInput(n): function(n) {setinputs(n);}, 
   train(): function() {step()}, 
   inputLayer(n): function(n) {createinputs(n)},
@@ -105,4 +105,5 @@ window.cortixo = {
     {
       out.push(n_value[(n_value.length-1)-(layeramount[layeramount.length-1]-1)+i]);
     }; return out;
+  }
 }
