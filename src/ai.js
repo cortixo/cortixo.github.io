@@ -17,6 +17,7 @@ var n_value = [];
 var layers = 0;
 var layeramount = [];
 var expectedout = [];
+var loss = 0;
 
 var ai_key = "U3VwZXJTaXJCaXJk";
 
@@ -90,10 +91,22 @@ function setinputs(inp) {
   }
 }
 
+function getloss() {
+  loss = 0;
+  for (var i = 0; i < expectedout.length) {
+    loss += (expectedout[i]-1) // abs value fix loss this does not work
+  }
+}
+
+function tweak() {
+  
+}
+
 function step() {
   //setinputs([1,0,1,0])
   evaluatenetwork();
   drawUI();
+  tweak();
   window.requestAnimationFrame(step);
 }
 
