@@ -63,10 +63,16 @@ function evaluatenetwork() {
 }
 
 function drawUI() {
-  for (var i = 0; i < 4; i++) {
+  
+  ctx.fillStyle = "lightgrey";
+  
+  ctx.beginPath();
+  ctx.rect(20+(((c.width-20)/4)*0), 20, ((((c.width-20)/4)-20)*2)+20, c.height-40);  
+  ctx.closePath();
+  
+  for (var i = 2; i < 4; i++) {
     ctx.beginPath();
     //ctx.lineWidth = "6";
-    ctx.fillStyle = "lightgrey";
     ctx.rect(20+(((c.width-20)/4)*i), 20, ((c.width-20)/4)-20, 340);  
     //ctx.stroke();
     ctx.fill();
