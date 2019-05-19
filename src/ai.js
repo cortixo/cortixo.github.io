@@ -51,7 +51,7 @@ function evaluatenetwork() {
       var nodev = 0;
       for (var c = 0; c<layeramount[evallayer-2]; c++) {
         var fspos = s_pos.indexOf("fL"+(evallayer-1)+"P"+(c+1)+"tL"+evallayer+"P"+(w+1));
-        nodev = (n_value[n_pos.indexOf("L"+(evallayer-1)+"P"+(c+1))]*s_weights[fspos])+s_bias[fspos];
+        nodev += (n_value[n_pos.indexOf("L"+(evallayer-1)+"P"+(c+1))]*s_weights[fspos])+s_bias[fspos];
       }
       n_value[n_pos.indexOf("L"+evallayer+"P"+(w+1))] += nodev;
       evalnode += 1;
