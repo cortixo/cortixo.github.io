@@ -1,3 +1,5 @@
+"use strict";
+
 // ai.js
 
 var c = document.getElementById("myCanvas");
@@ -95,11 +97,11 @@ createlayer(1);
 
 try {
 window.cortixo = {
-  setInput(n): function(n) {setinputs(n);}, 
-  train(): function() {step()}, 
-  inputLayer(n): function(n) {createinputs(n)},
-  hiddenLayer(n): function(n) {createlayer(n)},
-  outputLayer(n): function(n) {createlayer(n)},
+  setInput: function(n) {setinputs(n);},
+  train: function() {step();}, 
+  inputLayer: function(n) {createinputs(n)},
+  hiddenLayer: function(n) {createlayer(n)},
+  outputLayer: function(n) {createlayer(n)},
   output: function() {
     var out=[];
     for(var i=0;i<layeramount[layeramount.length-1];i++)
