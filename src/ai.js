@@ -43,8 +43,26 @@ function createlayer(a) {
   }
 }
 
+function evaluatenetwork() {
+  var evallayer = 2;
+  for (var i = 0; i < (layeramount.length-1);i++) {
+    var evalnode = 1;
+    for (var w = 0;w<layeramount[evallayer-1];w++) {
+      var nodev = 0;
+      for (var c = 0; c<layeramount[evallayer-2]; c++) {
+        var fspos = s_pos.indexOf("fL"+(evallayer-1)+"P"+(c+1)+"tL"+evallayer+"P"+(w+1));
+        nodev = (n_value[n_pos.indexOf("L"+(evallayer-1)+"P"+(c+1))]*s_weight[fspos])+s_bias[fspos];
+      }
+      n_value[n_pos.indexOf("L"+evallayer+"P"+(w+1))] += nodev;
+      evalnode += 1;
+    }
+    evallayer += 1;
+  }
+}
+
 createinputs(4);
 createlayer(5);
+createlayer(1);
 
 function drawUI() {
   for (var i = 0; i < 4; i++) {
