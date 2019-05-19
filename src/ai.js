@@ -97,6 +97,11 @@ createlayer(1);
 
 try {
 window.cortixo = {
+  version: "Version 1.0",
+  starttime: "19/05/2019 AEST",
+  author: "SuperSirBird",
+  synapses: s_pos.length,
+  neurons: n_pos.length,
   setInput: function(n) {setinputs(n);},
   train: function() {step();}, 
   inputLayer: function(n) {createinputs(n)},
@@ -109,10 +114,6 @@ window.cortixo = {
       out.push(n_value[(n_value.length-1)-(layeramount[layeramount.length-1]-1)+i]);
     }; return out;
   }
-}
-
-window.test = {
-  v: "1.0"
 }
 
 } catch(err) {alert(err)}
