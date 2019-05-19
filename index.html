@@ -10,6 +10,16 @@
   <body>
     <canvas id="myCanvas"></canvas>
     <script type="application/javascript" src="src/ai.js"></script>
+    <script>
+      cortixo.inputLayer(1);
+      cortixo.hiddenLayer(2);
+      cortixo.outputLayer(1);
+      
+      cortixo.setInput([0.5]);
+      cortixo.expectedOutput([1]);
+      
+      cortixo.train();
+    </script>
   </body>
   
 </html>
