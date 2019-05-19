@@ -16,6 +16,7 @@ var n_value = [];
 
 var layers = 0;
 var layeramount = [];
+var expecteoOut = [];
 
 var ai_key = "U3VwZXJTaXJCaXJk";
 
@@ -96,10 +97,6 @@ function step() {
   window.requestAnimationFrame(step);
 }
 
-createinputs(4);
-createlayer(5);
-createlayer(1);
-
 //window.requestAnimationFrame(step);
 
 // cortixo object
@@ -116,6 +113,7 @@ window.cortixo = {
   inputLayer: function(n) {createinputs(n)},
   hiddenLayer: function(n) {createlayer(n)},
   outputLayer: function(n) {createlayer(n)},
+  expectedOutput: function(n) {expectedout = n},
   output: function() {
     var out=[];
     for(var i=0;i<layeramount[layeramount.length-1];i++)
