@@ -53,7 +53,7 @@ function drawUI() {
     ctx.beginPath();
     //ctx.lineWidth = "6";
     ctx.strokeStyle = "lightgrey";
-    ctx.rect(20+(((c.width-40)/4)*i), 20, (c.width-20)/4)-20, 340);  
+    ctx.rect(20+(((c.width-40)/4)*i), 20, ((c.width-20)/4)-20, 340);  
     //ctx.stroke();
     ctx.fill();
     ctx.closePath();
@@ -64,7 +64,7 @@ function drawUI() {
 function step() {
   try {
   drawUI();
-  window.requestAnimationFrame(step());} catch(err) {alert(err)}
+  window.requestAnimationFrame(step);} catch(err) {alert(err)}
 }
 try{
-window.requestAnimationFrame(step());} catch(err) {alert(err)}
+window.requestAnimationFrame(step);} catch(err) {alert(err)}
