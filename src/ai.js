@@ -53,16 +53,12 @@ function evaluatenetwork() {
         var fspos = s_pos.indexOf("fL"+(evallayer-1)+"P"+(c+1)+"tL"+evallayer+"P"+(w+1));
         nodev += (n_value[n_pos.indexOf("L"+(evallayer-1)+"P"+(c+1))]*s_weights[fspos])+s_bias[fspos];
       }
-      n_value[n_pos.indexOf("L"+evallayer+"P"+(w+1))] += nodev;
+      n_value[n_pos.indexOf("L"+evallayer+"P"+(w+1))] = nodev;
       evalnode += 1;
     }
     evallayer += 1;
   }
 }
-
-createinputs(4);
-createlayer(5);
-createlayer(1);
 
 function drawUI() {
   for (var i = 0; i < 4; i++) {
@@ -76,9 +72,37 @@ function drawUI() {
   }
 }
 
+function setinputs(inp) {
+  for (var i = 0; i < layeramount[0]; i++) {
+    n_value[i] = inp[i];
+  }
+}
+
 function step() {
+  //setinputs([1,0,1,0])
+  evaluatenetwork();
   drawUI();
   window.requestAnimationFrame(step);
 }
 
-window.requestAnimationFrame(step);
+createinputs(4);
+createlayer(5);
+createlayer(1);
+
+//window.requestAnimationFrame(step);
+
+// cortixo object
+
+window.cortixo = {
+  setInput(n): function(n) {setinputs(n);}, 
+  train(): function() {step()}, 
+  inputLayer(n): function(n) {createinputs(n)},
+  hiddenLayer(n): function(n) {createlayer(n)},
+  outputLayer(n): function(n) {createlayer(n)},
+  output: function() {
+    var out=[];
+    for(var i=0;i<layeramount[layeramount.length-1];i++)
+    {
+      out.push(n_value[(n_value.length-1)-(layeramount[layeramount.length-1]-1)+i]);
+    }; return out;
+}
