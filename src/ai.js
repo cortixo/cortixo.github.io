@@ -16,7 +16,7 @@ var n_value = [];
 
 var layers = 0;
 var layeramount = [];
-var expecteoOut = [];
+var expectedout = [];
 
 var ai_key = "U3VwZXJTaXJCaXJk";
 
