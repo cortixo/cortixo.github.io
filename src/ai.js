@@ -1,4 +1,9 @@
-// Ai.js
+// ai.js
+
+var c = document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+c.width  = window.innerWidth;
+c.height = window.innerHeight;
 
 var s_weights = [];
 var s_bias = [];
@@ -39,3 +44,21 @@ function createlayer(a) {
 
 createinputs(4);
 createlayer(5);
+
+function drawUI() {
+  for (var i = 0; i < 4; i++) {
+    ctx.beginPath();
+    //ctx.lineWidth = "6";
+    ctx.strokeStyle = "lightgrey";
+    ctx.rect(20+(((c.width-40)/4)*i), 20, (c.width-20)/4)-20, 340);  
+    //ctx.stroke();
+    ctx.fill();
+  }
+}
+
+function step() {
+  drawUI();
+  window.requestAnimationFrame(step());
+}
+
+window.requestAnimationFrame(step());
