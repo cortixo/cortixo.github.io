@@ -18,16 +18,18 @@ var layeramount = [];
 var ai_key = "U3VwZXJTaXJCaXJk";
 
 function createinputs(a) {
+  try {
   layeramount.push(a);
   layers += 1;
   
   for (var i = 0; i < a; i++) {
     n_pos.push("L"+layers+"P"+(i+1));
     n_value.push(0);
-  }
+  }} catch(err) {alert(err)}
 }
 
 function createlayer(a) {
+  try {
   layeramount.push(a);
   layers += 1
   
@@ -39,13 +41,14 @@ function createlayer(a) {
       s_weights.push(0.5);
       s_bias.push(0);
     }
-  }
+  }} catch(err) {alert(err)}
 }
-
+try{
 createinputs(4);
-createlayer(5);
+createlayer(5);} catch(err) {alert(err)}
 
 function drawUI() {
+  try { 
   for (var i = 0; i < 4; i++) {
     ctx.beginPath();
     //ctx.lineWidth = "6";
@@ -53,12 +56,15 @@ function drawUI() {
     ctx.rect(20+(((c.width-40)/4)*i), 20, (c.width-20)/4)-20, 340);  
     //ctx.stroke();
     ctx.fill();
+    ctx.closePath();
   }
+  } catch(err) {alert(err)}
 }
 
 function step() {
+  try {
   drawUI();
-  window.requestAnimationFrame(step());
+  window.requestAnimationFrame(step());} catch(err) {alert(err)}
 }
-
-window.requestAnimationFrame(step());
+try{
+window.requestAnimationFrame(step());} catch(err) {alert(err)}
