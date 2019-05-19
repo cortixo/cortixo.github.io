@@ -37,7 +37,7 @@ function createlayer(a) {
     n_pos.push("L"+layers+"P"+(i+1));
     n_value.push(0);
     for (var w = 0; w < layeramount[layers-1]; w++) {
-      spos.push("fL"+(layers-1)+"P"+(w+1)+"tL"+layers+"P"+(i+1));
+      s_pos.push("fL"+(layers-1)+"P"+(w+1)+"tL"+layers+"P"+(i+1));
       s_weights.push(0.5);
       s_bias.push(0);
     }
@@ -52,8 +52,8 @@ function drawUI() {
   for (var i = 0; i < 4; i++) {
     ctx.beginPath();
     //ctx.lineWidth = "6";
-    ctx.strokeStyle = "lightgrey";
-    ctx.rect(20+(((c.width-40)/4)*i), 20, ((c.width-20)/4)-20, 340);  
+    ctx.fillStyle = "lightgrey";
+    ctx.rect(20+(((c.width-20)/4)*i), 20, ((c.width-20)/4)-20, 340);  
     //ctx.stroke();
     ctx.fill();
     ctx.closePath();
