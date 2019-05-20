@@ -12,11 +12,12 @@
     <script type="application/javascript" src="src/ai.js"></script>
     <script>
       cortixo.inputLayer(1);
-      cortixo.hiddenLayer(2);
-      cortixo.outputLayer(1);
+      cortixo.hiddenLayer(4);
+      cortixo.hiddenLayer(4);
+      cortixo.outputLayer(4);
       
       cortixo.setInput([0.5]);
-      cortixo.expectedOutput([1]);
+      cortixo.expectedOutput([1,0,1,0]);
       
       cortixo.train();
     </script>
