@@ -71,7 +71,10 @@ function drawUI() {
   
   ctx.fillStyle = "lightgrey";
   
+  ctx.beginPath();
   ctx.rect(0, 0, c.width, c.height);
+  ctx.fill();
+  ctx.closePath();
   
   // draw loss
   
