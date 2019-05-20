@@ -103,13 +103,17 @@ function getloss() {
 function tweak() {
   getloss();
   losschart.push(loss);
+  
+  var oldloss = loss;
+  
+  // multiple dimension
 }
 
 function step() {
   //setinputs([1,0,1,0])
   evaluatenetwork();
-  drawUI();
   tweak();
+  drawUI();
   window.requestAnimationFrame(step);
 }
 
