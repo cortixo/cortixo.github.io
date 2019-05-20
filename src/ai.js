@@ -18,6 +18,7 @@ var layers = 0;
 var layeramount = [];
 var expectedout = [];
 var loss = 0;
+var learningrate = 0.1;
 
 var losschart = [];
 
@@ -105,25 +106,25 @@ function tweak() {
   losschart.push(loss);
   
   var oldloss = loss;
-  var learningrate = 0.1;
   
   // 1 dimensional gradient (temp)
   
   var item_ = Math.round(Math.random()*(s_weights.length-1));
+  var add_ = (Math.random()-0.5)*2*learningrate;
   
   if (Math.round(Math.random()) == 0) {
-    s_weights[item_] += (Math.random()-0.5)*2*learningrate;
+    s_weights[item_] += add_;
     evaluatenetwork();
     getloss();
     if (loss > oldloss) {
-      s_weights[item_] -= ((Math.random()-0.5)*2*learningrate)*1.2; // slope
+      s_weights[item_] -= add_*1.2; // slope
     }
   } else {
-    s_bias[item_] += (Math.random()-0.5)*2*learningrate;
+    s_bias[item_] += add_;
     evaluatenetwork();
     getloss();
     if (loss > oldloss) {
-      s_bias[item_] -= ((Math.random()-0.5)*2*learningrate)*1.2; // slope
+      s_bias[item_] -= add_*1.2; // slope
     }
   }
   
@@ -155,6 +156,7 @@ window.cortixo = {
   outputLayer: function(n) {createlayer(n)},
   expectedOutput: function(n) {expectedout = n},
   run: function() {evaluatenetwork()},
+  learnRate: function(n) {learningrate = n},
   output: function() {
     var out=[];
     for(var i=0;i<layeramount[layeramount.length-1];i++)
