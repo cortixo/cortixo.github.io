@@ -172,9 +172,9 @@ function tweak() {
       getloss();
       
       if (loss < oldloss) {
-        item_a_tv = item_a_v+learningrate*Math.sin(((Math.PI*2)/8)*dir);
-        item_b_tv = item_b_v+learningrate*Math.cos(((Math.PI*2)/8)*dir)}else{s_bias[item_b];
-        oldloss = loss
+        item_a_tv = (item_a_v+(learningrate*Math.sin(((Math.PI*2)/8)*dir)));
+        item_b_tv = (item_b_v+(learningrate*Math.cos(((Math.PI*2)/8)*dir)));
+        oldloss = loss;
       }
     }
     
