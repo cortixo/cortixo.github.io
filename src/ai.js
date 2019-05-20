@@ -93,7 +93,7 @@ function setinputs(inp) {
 
 function getloss() {
   loss = 0;
-  for (var i = 0; i < expectedout.length) {
+  for (var i = 0; i < expectedout.length; i++) {
     loss += Math.abs(expectedout[i]-n_value[i+(n_value.length-(layeramount[layeramount.length]))]);
   }
 }
