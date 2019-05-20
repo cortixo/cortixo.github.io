@@ -19,7 +19,10 @@
       cortixo.setInput([0.5]);
       cortixo.expectedOutput([1,0,1,0]);
       
-      cortixo.train();
+      for (var i = 0;i<1000;i++) { cortixo.train(); } // train 1,000
+      
+      cortixo.setInput([0.5]);
+      cortixo.run();
     </script>
   </body>
   
