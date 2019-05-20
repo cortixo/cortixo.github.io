@@ -109,21 +109,21 @@ function tweak() {
   
   // 1 dimensional gradient (temp)
   
-  var item = Math.random()*(s_weights.length-1)
+  var item_ = Math.round(Math.random()*(s_weights.length-1));
   
   if (Math.round(Math.random()) == 0) {
-    s_weights[item] += (Math.random()-0.5)*2*learningrate;
+    s_weights[item_] += (Math.random()-0.5)*2*learningrate;
     evaluatenetwork();
     getloss();
     if (loss > oldloss) {
-      s_weights[item] -= ((Math.random()-0.5)*2*learningrate)*1.2; // slope
+      s_weights[item_] -= ((Math.random()-0.5)*2*learningrate)*1.2; // slope
     }
   } else {
-    s_bias[item] += (Math.random()-0.5)*2*learningrate;
+    s_bias[item_] += (Math.random()-0.5)*2*learningrate;
     evaluatenetwork();
     getloss();
     if (loss > oldloss) {
-      s_bias[item] -= ((Math.random()-0.5)*2*learningrate)*1.2; // slope
+      s_bias[item_] -= ((Math.random()-0.5)*2*learningrate)*1.2; // slope
     }
   }
   
