@@ -154,6 +154,7 @@ window.cortixo = {
   hiddenLayer: function(n) {createlayer(n)},
   outputLayer: function(n) {createlayer(n)},
   expectedOutput: function(n) {expectedout = n},
+  run: function() {evaluatenetwork()},
   output: function() {
     var out=[];
     for(var i=0;i<layeramount[layeramount.length-1];i++)
