@@ -133,7 +133,7 @@ function tweak() {
       if(d_st[1]=="W") {s_weights[d_s[1]] += 0.1} if(d_st[1]=="B") {s_bias[d_s[1]] += 0.1} d_sv[1]+=0.1;
       evaluatenetwork();
       getloss();
-      if (loss < oldloss) {d_sl = [(d_sv[0]),(d_sv[1])]};
+      if (loss < oldloss) {d_sl = [(d_sv[0]),(d_sv[1])]; oldloss = loss};
     }
     if(d_st[1]=="W") {s_weights[d_s[1]] -= 0.5} if(d_st[1]=="B") {s_bias[d_s[1]] -= 0.5}
   }
