@@ -105,8 +105,46 @@ function tweak() {
   losschart.push(loss);
   
   var oldloss = loss;
+  var learningrate = 0.1;
   
-  // multiple dimension
+  // 2 dimensional gradienting
+  var d_s = [];
+  var d_st = [];
+  
+  var d_sv = [];
+  
+  var d_sl = [];
+  
+  if (Math.round(Math.random()) == 0) {d_s.push(Math.round(Math.random()*(s_weights.length-1)));d_st.push("W");d_sv.push(s_weight[d_s[0]]);}; 
+  else {d_s.push(Math.round(Math.random()*(s_bias.length-1)));d_st.push("B");d_sv.push(s_bias[d_s[0]]);}
+  
+  if (Math.round(Math.random()) == 0) {d_s.push(Math.round(Math.random()*(s_weights.length-1)));d_st.push("W");d_sv.push(s_weight[d_s[1]]);}
+  else {d_s.push(Math.round(Math.random()*(s_bias.length-1)));d_st.push("B");d_sv.push(s_bias[d_s[1]]);}
+  
+  if (d_s[0] != d_s[1]) {
+  
+  if(d_st[0]=="W") {s_weights[d_s[0]] -= 0.3} if(d_st[0]=="B") {s_bias[d_s[0]] -= 0.3}
+  if(d_st[1]=="W") {s_weights[d_s[1]] -= 0.3} if(d_st[1]=="B") {s_bias[d_s[1]] -= 0.3}
+  
+  for (var i = -2; i < 3; i++) {
+    if(d_st[0]=="W") {s_weights[d_s[0]] += 0.1} if(d_st[0]=="B") {s_bias[d_s[0]] += 0.1} d_sv[0]+=0.1;
+    
+    for (var w = -2; w < 3; w++) {
+      if(d_st[1]=="W") {s_weights[d_s[1]] += 0.1} if(d_st[1]=="B") {s_bias[d_s[1]] += 0.1} d_sv[1]+=0.1;
+      evaluatenetwork();
+      getloss();
+      if (loss < oldloss) {d_sl = [(d_sv[0]),(d_sv[1])]};
+    }
+    if(d_st[1]=="W") {s_weights[d_s[1]] -= 0.5} if(d_st[1]=="B") {s_bias[d_s[1]] -= 0.5}
+  }
+  if(d_st[0]=="W") {s_weights[d_s[0]] -= 0.2} if(d_st[0]=="B") {s_bias[d_s[0]] -= 0.2}
+  if(d_st[1]=="W") {s_weights[d_s[1]] += 0.2} if(d_st[1]=="B") {s_bias[d_s[1]] += 0.2}
+  
+  if (d_st[0]=="W") {s_weights[d_s] = d_sv}if (d_st[0]=="B") {s_bias[d_s] = d_sv}
+  if (d_st[1]=="W") {s_weights[d_s] = d_sv}if (d_st[1]=="B") {s_bias[d_s] = d_sv}
+  }
+  evaluatenetwork();
+  getloss();
 }
 
 function step() {
