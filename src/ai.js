@@ -4,8 +4,6 @@
 
 var c = document.getElementById("cortixoUI");
 var ctx = c.getContext("2d");
-c.width  = window.innerWidth;
-c.height = window.innerHeight;
 
 var s_weights = [];
 var s_bias = [];
