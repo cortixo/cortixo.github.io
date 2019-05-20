@@ -71,25 +71,13 @@ function drawUI() {
   
   ctx.fillStyle = "lightgrey";
   
-  ctx.beginPath();
-  ctx.rect(20+(((c.width-20)/4)*0), 20, ((((c.width-20)/4)-20)*2)+20, c.height-40);  
-  ctx.fill();
-  ctx.closePath();
-  
-  for (var i = 2; i < 4; i++) {
-    ctx.beginPath();
-    //ctx.lineWidth = "6";
-    ctx.rect(20+(((c.width-20)/4)*i), 20, ((c.width-20)/4)-20, 340);  
-    //ctx.stroke();
-    ctx.fill();
-    ctx.closePath();
-  }
+  ctx.rect(0, 0, c.width, c.height);
   
   // draw loss
   
   ctx.fillStyle = "white";
   ctx.beginPath();
-  ctx.rect(20+(((c.width-20)/4)*2)+5, 20+5, ((c.width-20)/4)-20-10, 340-10);  
+  ctx.rect(5, 5, c.width-10, c.height-10);  
   ctx.fill();
   ctx.closePath();
   
@@ -98,11 +86,11 @@ function drawUI() {
   ctx.strokeStyle = "#33FFA2";
   for (var i = 0; i < losschart.length;i++) {
     ctx.beginPath();
-    ctx.moveTo(20+(((c.width-20)/4)*2)+5+((((c.width-20)/4)-20-10)/losschart.length)*i, (20+340-5-1)-((losschart[i]/4)*(340-10)));
+    ctx.moveTo(5+((c.width-10)/losschart.length)*i,c.height-5 - (losschart[i]/4)*(c.height-10));
     if (i == losschart.length-1) {
-      ctx.lineTo(20+(((c.width-20)/4)*2)+5+((((c.width-20)/4)-20-10)/losschart.length)*(i+1), (20+340-5-1)-((losschart[i]/4)*(340-10)));
+      ctx.lineTo(5+((c.width-10)/losschart.length)*(i+1),c.height-5 - (losschart[i]/4)*(c.height-10));
     } else {
-      ctx.lineTo(20+(((c.width-20)/4)*2)+5+((((c.width-20)/4)-20-10)/losschart.length)*(i+1), (20+340-5-1)-((losschart[i+1]/4)*(340-10)));
+      ctx.lineTo(5+((c.width-10)/losschart.length)*(i+1),c.height-5 - (losschart[i+1]/4)*(c.height-10));
     }
     ctx.stroke();
     ctx.closePath();
