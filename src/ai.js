@@ -19,6 +19,8 @@ var layeramount = [];
 var expectedout = [];
 var loss = 0;
 
+var losschart = [];
+
 var ai_key = "U3VwZXJTaXJCaXJk";
 
 function createinputs(a) {
@@ -57,7 +59,7 @@ function evaluatenetwork() {
         var fspos = s_pos.indexOf("fL"+(evallayer-1)+"P"+(c+1)+"tL"+evallayer+"P"+(w+1));
         nodev += (n_value[n_pos.indexOf("L"+(evallayer-1)+"P"+(c+1))]*s_weights[fspos])+s_bias[fspos];
       }
-      n_value[n_pos.indexOf("L"+evallayer+"P"+(w+1))] = nodev;
+      n_value[n_pos.indexOf("L"+evallayer+"P"+(w+1))] = 0.5+(Math.tanh(2*(nodev-0.5))/2);
       evalnode += 1;
     }
     evallayer += 1;
@@ -100,6 +102,7 @@ function getloss() {
 
 function tweak() {
   getloss();
+  losschart.push(loss);
 }
 
 function step() {
