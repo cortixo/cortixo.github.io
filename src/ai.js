@@ -115,7 +115,7 @@ function tweak() {
   
   var d_sl = [];
   
-  if (Math.round(Math.random()) == 0) {d_s.push(Math.round(Math.random()*(s_weights.length-1)));d_st.push("W");d_sv.push(s_weight[d_s[0]]);}; 
+  if (Math.round(Math.random()) == 0) {d_s.push(Math.round(Math.random()*(s_weights.length-1)));d_st.push("W");d_sv.push(s_weight[d_s[0]]);} 
   else {d_s.push(Math.round(Math.random()*(s_bias.length-1)));d_st.push("B");d_sv.push(s_bias[d_s[0]]);}
   
   if (Math.round(Math.random()) == 0) {d_s.push(Math.round(Math.random()*(s_weights.length-1)));d_st.push("W");d_sv.push(s_weight[d_s[1]]);}
