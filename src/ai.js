@@ -100,11 +100,11 @@ function drawUI() {
   ctx.strokeStyle = "#33FFA2";
   for (var i = 0; i < losschart.length;i++) {
     ctx.beginPath();
-    ctx.moveTo(20+(((c.width-20)/4)*2)+5+((((c.width-20)/4)-20-20-20)/losschart.length)*i, (25+340-5)-((losschart[i]/4)*(340-20)));
+    ctx.moveTo(20+(((c.width-20)/4)*2)+5+((((c.width-20)/4)-20-20-20)/losschart.length)*i, (20+340-5-1)-((losschart[i]/4)*(340-10)));
     if (i == losschart.length-1) {
-      ctx.lineTo(20+(((c.width-20)/4)*2)+5+((((c.width-20)/4)-20-20-20)/losschart.length)*(i+1), (25+340-5)-((losschart[i]/4)*(340-20)));
+      ctx.lineTo(20+(((c.width-20)/4)*2)+5+((((c.width-20)/4)-20-20-20)/losschart.length)*(i+1), (20+340-5-1)-((losschart[i]/4)*(340-10)));
     } else {
-      ctx.lineTo(20+(((c.width-20)/4)*2)+5+((((c.width-20)/4)-20-20-20)/losschart.length)*(i+1), (25+340-5)-((losschart[i+1]/4)*(340-20)));
+      ctx.lineTo(20+(((c.width-20)/4)*2)+5+((((c.width-20)/4)-20-20-20)/losschart.length)*(i+1), (20+340-5-1)-((losschart[i+1]/4)*(340-10)));
     }
     ctx.stroke();
     ctx.closePath();
