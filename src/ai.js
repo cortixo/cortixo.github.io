@@ -152,7 +152,7 @@ function step() {
   evaluatenetwork();
   tweak();
   drawUI();
-  window.requestAnimationFrame(step);
+  //window.requestAnimationFrame(step);
 }
 
 //window.requestAnimationFrame(step);
