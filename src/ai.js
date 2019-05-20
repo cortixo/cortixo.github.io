@@ -153,7 +153,6 @@ function tweak() {
   
   // 2 dimensional gradient
   
-    try {
     alert("a")
   var item_a = Math.round(Math.random()*(s_weights.length-1)); 
   if (Math.round(Math.random()) == 0) {var iat = "W"} else {var iat = "B"}
@@ -184,7 +183,7 @@ function tweak() {
     if(iat=="W"){s_weights[item_a] = item_a_tv}else{s_bias[item_a] = item_a_tv}
     if(ibt=="W"){s_weights[item_b] = item_b_tv}else{s_bias[item_b] = item_b_tv}
     alert("done")
-  }}catch(err) {alert(err)}
+  }
   
 }
 
