@@ -126,10 +126,10 @@ function tweak() {
   if(d_st[0]=="W") {s_weights[d_s[0]] -= 0.3} if(d_st[0]=="B") {s_bias[d_s[0]] -= 0.3}
   if(d_st[1]=="W") {s_weights[d_s[1]] -= 0.3} if(d_st[1]=="B") {s_bias[d_s[1]] -= 0.3}
   
-  for (var i = -2; i < 3; i++) {
+  for (var i_ = -2; i_ < 3; i_++) {
     if(d_st[0]=="W") {s_weights[d_s[0]] += 0.1} if(d_st[0]=="B") {s_bias[d_s[0]] += 0.1} d_sv[0]+=0.1;
     
-    for (var w = -2; w < 3; w++) {
+    for (var w_ = -2; w_ < 3; w_++) {
       if(d_st[1]=="W") {s_weights[d_s[1]] += 0.1} if(d_st[1]=="B") {s_bias[d_s[1]] += 0.1} d_sv[1]+=0.1;
       evaluatenetwork();
       getloss();
