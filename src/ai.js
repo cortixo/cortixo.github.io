@@ -160,17 +160,17 @@ function tweak() {
   
   if (item_a != item_b) {
     
-    if(iat=="W"){var item_a_v = s_weights[item_a];}else{var item_a_v = s_bias[item_a];}
-    if(ibt=="W"){var item_b_v = s_weights[item_b];}else{var item_b_v = s_bias[item_b];}
+    if(iat=="W"){var item_a_v = s_weights[item_a]}else{var item_a_v = s_bias[item_a]}
+    if(ibt=="W"){var item_b_v = s_weights[item_b]}else{var item_b_v = s_bias[item_b]}
     
     var item_a_tv = item_a_v; var item_b_tv = item_b_v;
     
     for (var dir = 0;dir<8;dir++) {
-      if(iat=="W"){s_weights[item_a] = item_a_v;}else{s_bias[item_a] = item_a_v;}
-      if(ibt=="W"){s_weights[item_b] = item_b_v;}else(s_bias[item_b] = item_b_v;)
+      if(iat=="W"){s_weights[item_a] = item_a_v}else{s_bias[item_a] = item_a_v}
+      if(ibt=="W"){s_weights[item_b] = item_b_v}else(s_bias[item_b] = item_b_v)
       
-      if(iat=="W"){s_weights[item_a] += learningrate*Math.sin(((Math.PI*2)/8)*dir);}else{s_bias[item_a] += learningrate*Math.sin(((Math.PI*2)/8)*dir);}
-      if(ibt=="W"){s_weights[item_b] += learningrate*Math.cos(((Math.PI*2)/8)*dir);}else{s_bias[item_b] += learningrate*Math.cos(((Math.PI*2)/8)*dir);}
+      if(iat=="W"){s_weights[item_a] += learningrate*Math.sin(((Math.PI*2)/8)*dir)}else{s_bias[item_a] += learningrate*Math.sin(((Math.PI*2)/8)*dir)}
+      if(ibt=="W"){s_weights[item_b] += learningrate*Math.cos(((Math.PI*2)/8)*dir)}else{s_bias[item_b] += learningrate*Math.cos(((Math.PI*2)/8)*dir)}
       
       evaluatenetwork();
       getloss();
@@ -178,8 +178,8 @@ function tweak() {
       if (loss < oldloss) {item_a_tv = s_weights[item_a];item_b_tv = s_weights[item_v];oldloss = loss}
     }
     
-    if(iat=="W"){s_weights[item_a] = item_a_tv;}else{s_bias[item_a] = item_a_tv;}
-    if(ibt=="W"){s_weights[item_b] = item_b_tv;}else{s_bias[item_b] = item_b_tv;}
+    if(iat=="W"){s_weights[item_a] = item_a_tv}else{s_bias[item_a] = item_a_tv}
+    if(ibt=="W"){s_weights[item_b] = item_b_tv}else{s_bias[item_b] = item_b_tv}
   }}catch(err) {alert(err)}
   
 }
