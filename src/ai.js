@@ -91,7 +91,7 @@ function drawUI() {
   
   if (losschart.length > 1000) {losschart.shift();}
   
-  ctx.strokeStyle = "aqua";
+  ctx.strokeStyle = "#33FFA2";
   for (var i = 0; i < losschart.length;i++) {
     ctx.beginPath();
     ctx.moveTo(20+(((c.width-20)/4)*2)+((((c.width-20)/4)-20)/losschart.length)*i, (20+340)-((losschart[i]/4)*340));
