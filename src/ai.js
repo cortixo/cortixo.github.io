@@ -107,44 +107,26 @@ function tweak() {
   var oldloss = loss;
   var learningrate = 0.1;
   
-  // 2 dimensional gradienting
-  var d_s = [];
-  var d_st = [];
+  // 1 dimensional gradient (temp)
   
-  var d_sv = [];
+  var item = Math.random()*(s_weights.length-1)
   
-  var d_sl = [];
-  try {
-  if (Math.round(Math.random()) == 0) {d_s.push(Math.round(Math.random()*(s_weights.length-1)));d_st.push("W");d_sv.push(s_weights[d_s[0]]);} 
-  else {d_s.push(Math.round(Math.random()*(s_bias.length-1)));d_st.push("B");d_sv.push(s_bias[d_s[0]]);}
-  
-  if (Math.round(Math.random()) == 0) {d_s.push(Math.round(Math.random()*(s_weights.length-1)));d_st.push("W");d_sv.push(s_weights[d_s[1]]);}
-  else {d_s.push(Math.round(Math.random()*(s_bias.length-1)));d_st.push("B");d_sv.push(s_bias[d_s[1]]);}
-  
-  if (d_s[0] != d_s[1]) {
-  
-  if(d_st[0]=="W") {s_weights[d_s[0]] -= 0.3} if(d_st[0]=="B") {s_bias[d_s[0]] -= 0.3}
-  if(d_st[1]=="W") {s_weights[d_s[1]] -= 0.3} if(d_st[1]=="B") {s_bias[d_s[1]] -= 0.3}
-  
-  for (var i_ = -2; i_ < 3; i_++) {
-    if(d_st[0]=="W") {s_weights[d_s[0]] += 0.1} if(d_st[0]=="B") {s_bias[d_s[0]] += 0.1} d_sv[0]+=0.1;
-    
-    for (var w_ = -2; w_ < 3; w_++) {
-      if(d_st[1]=="W") {s_weights[d_s[1]] += 0.1} if(d_st[1]=="B") {s_bias[d_s[1]] += 0.1} d_sv[1]+=0.1;
-      evaluatenetwork();
-      getloss();
-      if (loss < oldloss) {d_sl = [(d_sv[0]),(d_sv[1])]; oldloss = loss};
+  if (Math.round(Math.random()) == 0) {
+    s_weights[item] += (Math.random()-0.5)*2*learningrate;
+    evaluatenetwork();
+    getloss();
+    if (loss > oldloss) {
+      s_weights[item] -= ((Math.random()-0.5)*2*learningrate)*1.2; // slope
     }
-    if(d_st[1]=="W") {s_weights[d_s[1]] -= 0.5} if(d_st[1]=="B") {s_bias[d_s[1]] -= 0.5}
+  } else {
+    s_bias[item] += (Math.random()-0.5)*2*learningrate;
+    evaluatenetwork();
+    getloss();
+    if (loss > oldloss) {
+      s_bias[item] -= ((Math.random()-0.5)*2*learningrate)*1.2; // slope
+    }
   }
-  if(d_st[0]=="W") {s_weights[d_s[0]] -= 0.2} if(d_st[0]=="B") {s_bias[d_s[0]] -= 0.2}
-  if(d_st[1]=="W") {s_weights[d_s[1]] += 0.2} if(d_st[1]=="B") {s_bias[d_s[1]] += 0.2}
   
-  if (d_st[0]=="W") {s_weights[d_s[0]] = d_sv}if (d_st[0]=="B") {s_bias[d_s[0]] = d_sv}
-  if (d_st[1]=="W") {s_weights[d_s[1]] = d_sv}if (d_st[1]=="B") {s_bias[d_s[1]] = d_sv}
-  }
-  evaluatenetwork();
-  getloss();} catch(err) {alert(err);}
 }
 
 function step() {
