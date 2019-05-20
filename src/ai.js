@@ -114,11 +114,11 @@ function tweak() {
   var d_sv = [];
   
   var d_sl = [];
-  
-  if (Math.round(Math.random()) == 0) {d_s.push(Math.round(Math.random()*(s_weights.length-1)));d_st.push("W");d_sv.push(s_weight[d_s[0]]);} 
+  try {
+  if (Math.round(Math.random()) == 0) {d_s.push(Math.round(Math.random()*(s_weights.length-1)));d_st.push("W");d_sv.push(s_weights[d_s[0]]);} 
   else {d_s.push(Math.round(Math.random()*(s_bias.length-1)));d_st.push("B");d_sv.push(s_bias[d_s[0]]);}
   
-  if (Math.round(Math.random()) == 0) {d_s.push(Math.round(Math.random()*(s_weights.length-1)));d_st.push("W");d_sv.push(s_weight[d_s[1]]);}
+  if (Math.round(Math.random()) == 0) {d_s.push(Math.round(Math.random()*(s_weights.length-1)));d_st.push("W");d_sv.push(s_weights[d_s[1]]);}
   else {d_s.push(Math.round(Math.random()*(s_bias.length-1)));d_st.push("B");d_sv.push(s_bias[d_s[1]]);}
   
   if (d_s[0] != d_s[1]) {
@@ -144,7 +144,7 @@ function tweak() {
   if (d_st[1]=="W") {s_weights[d_s] = d_sv}if (d_st[1]=="B") {s_bias[d_s] = d_sv}
   }
   evaluatenetwork();
-  getloss();
+  getloss();} catch(err) {alert(err);}
 }
 
 function step() {
