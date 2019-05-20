@@ -94,12 +94,12 @@ function setinputs(inp) {
 function getloss() {
   loss = 0;
   for (var i = 0; i < expectedout.length) {
-    loss += (expectedout[i]-1) // abs value fix loss this does not work
+    loss += Math.abs(expectedout[i]-n_value[i+(n_value.length-(layeramount[layeramount.length]))]);
   }
 }
 
 function tweak() {
-  
+  getloss();
 }
 
 function step() {
