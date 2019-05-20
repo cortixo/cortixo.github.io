@@ -132,23 +132,54 @@ function tweak() {
   
   // 1 dimensional gradient (temp)
   
-  var item_ = Math.round(Math.random()*(s_weights.length-1));
-  var add_ = (Math.random()-0.5)*2*learningrate;
+  //var item_ = Math.round(Math.random()*(s_weights.length-1));
+  //var add_ = (Math.random()-0.5)*2*learningrate;
   
-  if (Math.round(Math.random()) == 0) {
-    s_weights[item_] += add_;
-    evaluatenetwork();
-    getloss();
-    if (loss > oldloss) {
-      s_weights[item_] -= add_*1.2; // slope
+  //if (Math.round(Math.random()) == 0) {
+  //  s_weights[item_] += add_;
+  //  evaluatenetwork();
+  //  getloss();
+  //  if (loss > oldloss) {
+  //    s_weights[item_] -= add_*1.2; // slope
+  //  }
+  //} else {
+  //  s_bias[item_] += add_;
+  //  evaluatenetwork();
+  //  getloss();
+  //  if (loss > oldloss) {
+  //    s_bias[item_] -= add_*1.2; // slope
+  //  }
+  //}
+  
+  // 2 dimensional gradient
+  
+  var item_a = Math.round(Math.random()*(s_weights.length-1)); 
+  if (Math.round(Math.random()) == 0) {var iat = "W"} else {var iat = "B"}
+  var item_b = Math.round(Math.random()*(s_weights.length-1));
+  if (Math.round(Math.random()) == 0) {var ibt = "W"} else {var ibt = "B"}
+  
+  if (item_a != item_b) {
+    
+    if(iat=="W"){var item_a_v = s_weights[item_a];}else{var item_a_v = s_bias[item_a];}
+    if(ibt=="W"){var item_b_v = s_weights[item_b];}else{var item_b_v = s_bias[item_b];}
+    
+    var item_a_tv = item_a_v; var item_b_tv = item_b_v;
+    
+    for (var dir = 0;dir<8;dir++) {
+      if(iat=="W"){s_weights[item_a] = item_a_v;}else{s_bias[item_a] = item_a_v;}
+      if(ibt=="W"){s_weights[item_b] = item_b_v;}else(s_bias[item_b] = item_b_v;)
+      
+      if(iat=="W"){s_weights[item_a] += learningrate*Math.sin(((Math.PI*2)/8)*dir);}else{s_bias[item_a] += learningrate*Math.sin(((Math.PI*2)/8)*dir);}
+      if(ibt=="W"){s_weights[item_b] += learningrate*Math.cos(((Math.PI*2)/8)*dir);}else{s_bias[item_b] += learningrate*Math.cos(((Math.PI*2)/8)*dir);}
+      
+      evaluatenetwork();
+      getloss();
+      
+      if (loss < oldloss) {item_a_tv = s_weights[item_a];item_b_tv = s_weights[item_v];oldloss = loss}
     }
-  } else {
-    s_bias[item_] += add_;
-    evaluatenetwork();
-    getloss();
-    if (loss > oldloss) {
-      s_bias[item_] -= add_*1.2; // slope
-    }
+    
+    if(iat=="W"){s_weights[item_a] = item_a_tv;}else{s_bias[item_a] = item_a_tv;}
+    if(ibt=="W"){s_weights[item_b] = item_b_tv;}else{s_bias[item_b] = item_b_tv;}
   }
   
 }
