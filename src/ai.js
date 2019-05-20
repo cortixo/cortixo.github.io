@@ -175,7 +175,7 @@ function tweak() {
       evaluatenetwork();
       getloss();
       
-      if (loss < oldloss) {item_a_tv = s_weights[item_a];item_b_tv = s_weights[item_v];oldloss = loss}
+      if (loss < oldloss) {item_a_tv = item_a_v;item_b_tv = item_b_v;oldloss = loss}
     }
     
     if(iat=="W"){s_weights[item_a] = item_a_tv}else{s_bias[item_a] = item_a_tv}
