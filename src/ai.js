@@ -91,11 +91,17 @@ function drawUI() {
   
   if (losschart.length > 1000) {losschart.shift();}
   
+  ctx.strokeStyle = "aqua";
   for (var i = 0; i < losschart.length;i++) {
     ctx.beginPath();
     ctx.moveTo(20+(((c.width-20)/4)*2)+((((c.width-20)/4)-20)/losschart.length)*i, (20+340)-((losschart[i]/4)*340));
-    ctx.lineTo(300, 150);
+    if (i == losschart.length-1) {
+      ctx.lineTo(20+(((c.width-20)/4)*2)+((((c.width-20)/4)-20)/losschart.length)*(i+1), (20+340)-((losschart[i]/4)*340));
+    } else {
+      ctx.lineTo(20+(((c.width-20)/4)*2)+((((c.width-20)/4)-20)/losschart.length)*(i+1), (20+340)-((losschart[i+1]/4)*340));
+    }
     ctx.stroke();
+    ctx.closePath();
   }
 }
 
