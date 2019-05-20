@@ -153,33 +153,36 @@ function tweak() {
   
   // 2 dimensional gradient
   try {
+    alert("a")
   var item_a = Math.round(Math.random()*(s_weights.length-1)); 
   if (Math.round(Math.random()) == 0) {var iat = "W"} else {var iat = "B"}
   var item_b = Math.round(Math.random()*(s_weights.length-1));
   if (Math.round(Math.random()) == 0) {var ibt = "W"} else {var ibt = "B"}
-  
+  alert("b")
   if (item_a != item_b) {
-    
+    alert("c")
     if(iat=="W"){var item_a_v = s_weights[item_a]}else{var item_a_v = s_bias[item_a]}
     if(ibt=="W"){var item_b_v = s_weights[item_b]}else{var item_b_v = s_bias[item_b]}
-    
+    alert("d")
     var item_a_tv = item_a_v; var item_b_tv = item_b_v;
-    
+    alert("e")
     for (var dir = 0;dir<8;dir++) {
+      alert("r")
       if(iat=="W"){s_weights[item_a] = item_a_v}else{s_bias[item_a] = item_a_v}
       if(ibt=="W"){s_weights[item_b] = item_b_v}else(s_bias[item_b] = item_b_v)
-      
+      alert("h")
       if(iat=="W"){s_weights[item_a] += learningrate*Math.sin(((Math.PI*2)/8)*dir)}else{s_bias[item_a] += learningrate*Math.sin(((Math.PI*2)/8)*dir)}
       if(ibt=="W"){s_weights[item_b] += learningrate*Math.cos(((Math.PI*2)/8)*dir)}else{s_bias[item_b] += learningrate*Math.cos(((Math.PI*2)/8)*dir)}
-      
+      alert("m")
       evaluatenetwork();
       getloss();
-      
+      alert("n")
       if (loss < oldloss) {item_a_tv = item_a_v;item_b_tv = item_b_v;oldloss = loss}
     }
-    
+    alert("l")
     if(iat=="W"){s_weights[item_a] = item_a_tv}else{s_bias[item_a] = item_a_tv}
     if(ibt=="W"){s_weights[item_b] = item_b_tv}else{s_bias[item_b] = item_b_tv}
+    alert("done")
   }}catch(err) {alert(err)}
   
 }
