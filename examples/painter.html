@@ -27,10 +27,10 @@
         var xpos_d = Math.round((Math.random*299));
         var ypos_d = Math.round((Math.random*299));
         
-        var cimg = document.getElementById("input_img");
-        var ctximg = cimg.getContext("2d");
+        var cimgr = document.getElementById("input_img");
+        var ctximgr = cimg.getContext("2d");
         
-        var rgb_at_pos = ctximg.getImageData(xpos_d, ypos_d, 1, 1).data; alert(rgb_at_pos);
+        var rgb_at_pos = ctximgr.getImageData(xpos_d, ypos_d, 1, 1).data; alert(rgb_at_pos);
         
         cortixo.setInput([xpos_d,ypos_d]);
         cortixo.expectedOutput([rgb_at_pos[0],rgb_at_pos[1],rgb_at_pos[2]]);
