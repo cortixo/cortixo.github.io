@@ -28,7 +28,7 @@
         var ypos_d = Math.round((Math.random*299));
         
         var cimgr = document.getElementById("input_img");
-        var ctximgr = cimg.getContext("2d");
+        var ctximgr = cimgr.getContext("2d");
         
         var rgb_at_pos = ctximgr.getImageData(xpos_d, ypos_d, 1, 1).data; alert(rgb_at_pos);
         
