@@ -17,6 +17,7 @@
     <script type="application/javascript" src="https://cortixo.github.io/src/ai.js"></script>
     
     <textarea rows=17 cols=100 style="resize: none;spellcheck='false'" id="code_inp">
+cortixo.reset();
 cortixo.learnRate(0.1);
 
 cortixo.inputLayer(1);
@@ -39,6 +40,7 @@ cortixo.run();</textarea>
         cortixo.synapses() - total synapse count <br>
         cortixo.neurons() - total neuron count <br>
         cortixo.learnRate(number) - set learn rate (0-2) <br>
+        cortixo.reset() - reset network
         cortixo.inputLayer(number) - create input layer <br>
         cortixo.hiddenLayer(number) - create hidden layer <br>
         cortixo.outputLayer(number) - create output layer <br>
