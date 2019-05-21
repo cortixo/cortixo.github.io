@@ -21,7 +21,7 @@
       
       function iteration() {
         
-        alert(cortixo.output)
+        alert(cortixo.output())
         
         iters += 1; document.getElementById("iters").innerHTML = iters;
         
@@ -62,7 +62,7 @@
         cortixo.hiddenLayer(20);
         cortixo.outputLayer(3);
         
-        alert(cortixo.output)
+        alert(cortixo.output())
         
         var cimg_ = document.getElementById("input_img");
         var ctximg_ = cimg_.getContext("2d");
