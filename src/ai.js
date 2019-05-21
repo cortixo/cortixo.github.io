@@ -101,8 +101,8 @@ function drawUI() {
 }
 
 function setinputs(inp) {
-  for (var i = 0; i < layeramount[0]; i++) {
-    n_value[i] = inp[i];
+  for (var iset = 0; iset < layeramount[0]; iset++) {
+    n_value[iset] = inp[iset];
   }
 }
 
@@ -194,7 +194,7 @@ window.cortixo = {
   synapses: function() {return s_pos.length},
   neurons: function() {return n_pos.length},
   reset: function() {s_weights = [];s_bias = [];s_pos = [];n_pos = [];n_value = [];layers = 0;layeramount = [];expectedout = [];loss = 0;learningrate = 0.1;losschart = []},
-  setInput: function(n) {setinputs(n);},
+  setInput: function(n) {setinputs(n)},
   train: function() {step();}, 
   inputLayer: function(n) {createinputs(n)},
   hiddenLayer: function(n) {createlayer(n)},
