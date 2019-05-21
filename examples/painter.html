@@ -60,11 +60,11 @@
         cortixo.hiddenLayer(20);
         cortixo.outputLayer(3);
         
-        var cimg = document.getElementById("input_img");
-        var ctximg = cimg.getContext("2d");
+        var cimg_ = document.getElementById("input_img");
+        var ctximg_ = cimg_.getContext("2d");
         
         var img = document.getElementById("img_");
-        ctximg.drawImage(img, 0, 0,300, 300);
+        ctximg_.drawImage(img, 0, 0,300, 300);
         
         window.requestAnimationFrame(iteration);
       }
