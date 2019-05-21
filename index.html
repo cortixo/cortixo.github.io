@@ -32,7 +32,7 @@ for (var i = 0;i<1000;i++) { cortixo.train(); } // train 1,000
 cortixo.setInput([0.5]);
 cortixo.run();</textarea>
       <br>
-      <button onclick="executescript">Execute Script</button>
+      <button onclick="executescript()">Execute Script</button>
       <br>
       <h2>Cortixo Commands</h2>
       <p>
@@ -64,11 +64,11 @@ cortixo.run();</textarea>
       
       function executescript() {
         var script = document.createElement("script");
-        var code_input = document.getElementById("coe_inp");
+        var code_input = document.getElementById("code_inp").value;
         try {
           script.appendChild(document.createTextNode(code_input));
           document.body.appendChild(script);
-        } catch (e) {
+        } catch(e) {
           script.text = code_input;
           document.body.appendChild(script);
         }
