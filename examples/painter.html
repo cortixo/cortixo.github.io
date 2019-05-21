@@ -23,6 +23,7 @@
         
         iters += 1; document.getElementById("iters").innerHTML = iters;
         
+        try {
         var xpos_d = Math.round((Math.random*299)+1);
         var ypos_d = Math.round((Math.random*299)+1);
         
@@ -36,7 +37,7 @@
         cortixo.train();
         
         var cout = document.getElementById("outputDraw");
-        var ctxout = cout.getContext("2d");
+        var ctxout = cout.getContext("2d");} catch(err) {alert(err);}
         
         try {
           ctxout.fillStyle = "rgb(" + cortixo.output[0] + "," + cortixo.output[1] + "," + cortixo.output[2] + ")";
