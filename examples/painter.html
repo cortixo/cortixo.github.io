@@ -27,8 +27,8 @@
         var xpos_d = Math.round((Math.random*299));
         var ypos_d = Math.round((Math.random*299));
         
-        var cimgr = document.getElementById("input_img");
-        var ctximgr = cimgr.getContext("2d");
+        //var cimgr = document.getElementById("input_img");
+        //var ctximgr = cimgr.getContext("2d");
         
         var rgb_at_pos = [0,0,0]; if (xpos_d > 150) {rgb_at_pos = [0,0,255]}
         
@@ -53,7 +53,6 @@
       
       window.onload = function() {
         cortixo.reset();
-        cortixo.max(765);
         cortixo.learnRate(0.1);
         
         cortixo.inputLayer(2);
