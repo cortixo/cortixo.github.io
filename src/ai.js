@@ -193,7 +193,7 @@ window.cortixo = {
   author: "SuperSirBird",
   synapses: function() {return s_pos.length},
   neurons: function() {return n_pos.length},
-  reset: function() {var s_weights = [];var s_bias = [];var s_pos = [];var n_pos = [];var n_value = [];var layers = 0;var layeramount = [];var expectedout = [];var loss = 0;var learningrate = 0.1;var losschart = []},
+  reset: function() {s_weights = [];s_bias = [];s_pos = [];n_pos = [];n_value = [];layers = 0;layeramount = [];expectedout = [];loss = 0;learningrate = 0.1;losschart = []},
   setInput: function(n) {setinputs(n);},
   train: function() {step();}, 
   inputLayer: function(n) {createinputs(n)},
