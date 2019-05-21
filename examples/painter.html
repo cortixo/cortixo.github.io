@@ -1,1 +1,64 @@
-<html></html>
+<html>
+  <head>
+    <title>painer</title>
+  </head>
+  <body>
+    <h1>ANN Painter</h1>
+    
+    <img id="img_" width="220" height="277" src="img_the_scream.jpg" style="display:none;">
+    
+    <canvas id="input_img" width=300px height=300px style="float:left;border:1px grey solid;"></canvas>
+    <canvas id="outputDraw" width=300px height=300px style="float:left;border:1px grey solid;"></canvas>
+    <br>
+    <canvas id="cortixoUI" width=300px height=300px style="float:left;border:1px grey solid;"></canvas>
+    <script type="application/javascript" src="https://cortixo.github.io/src/ai.js"></script>
+    
+    <script>
+      
+      function iteration() {
+        var xpos_d = Math.round((Math.random*299)+1);
+        var ypos_d = Math.round((Math.random*299)+1);
+        
+        var cimg = document.getElementById("input_img");
+        var ctximg = cimg.getContext("2d");
+        
+        var rbg_at_pos = ctximg.getImageData(xpos_d, ypos_d, 1, 1).data;
+        
+        cortixo.setInput([xpos_d,ypos_d]);
+        cortixo.expectedOutput([rgb_at_pos[0],rgb_at_pos[1],rgb_at_pos[2]]);
+        cortixo.train();
+        
+        var cout = document.getElementById("outputDraw");
+        var ctxout = cout.getContext("2d");
+        
+        try {
+          ctxout.fillStyle = "rgb(" + cortixo.output[0] + "," + cortixo.output[1] + "," + cortixo.output[2] + ")";
+          ctxout.beginPath();
+          ctxout.rect(xpos_d,ypos_d,3,3);
+          ctxout.fill();
+          ctxout.closePath();
+        } catch(err) {}
+        
+      }
+      
+      window.onload = function() {
+        cortixo.reset();
+        cortixo.learnRate(0.1);
+        
+        cortixo.inputLayer(2);
+        cortixo.hiddenLayer(20);
+        cortixo.hiddenLayer(20);
+        cortixo.outputLayer(3);
+        
+        var cimg = document.getElementById("input_img");
+        var ctximg = cimg.getContext("2d");
+        
+        var img = document.getElementById("img_");
+        ctximg.drawImage(img, 0, 0,300, 300);
+        
+        window.requestAnimationFrame(iteration);
+      }
+      
+    </script>
+  </body>
+</html>
