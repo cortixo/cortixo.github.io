@@ -16,7 +16,7 @@
     <canvas id="cortixoUI" width=300px height=300px style="float:left;"></canvas>
     <script type="application/javascript" src="https://cortixo.github.io/src/ai.js"></script>
     
-    <textarea rows=17 cols=100 style="resize: none;spellcheck='false'">
+    <textarea rows=17 cols=100 style="resize: none;spellcheck='false'" id="code_inp">
 cortixo.learnRate(0.1);
 
 cortixo.inputLayer(1);
@@ -32,7 +32,7 @@ for (var i = 0;i<1000;i++) { cortixo.train(); } // train 1,000
 cortixo.setInput([0.5]);
 cortixo.run();</textarea>
       <br>
-      <button>Execute Script</button>
+      <button onclick="executescript">Execute Script</button>
       <br>
       <h2>Cortixo Commands</h2>
       <p>
@@ -62,20 +62,18 @@ cortixo.run();</textarea>
     
     <script>
       
-      cortixo.learnRate(0.1);
+      function executescript() {
+        var script = document.createElement("script");
+        var code_input = document.getElementById("coe_inp");
+        try {
+          script.appendChild(document.createTextNode(code_input));
+          document.body.appendChild(script);
+        } catch (e) {
+          script.text = code_input;
+          document.body.appendChild(script);
+        }
+      }
       
-      cortixo.inputLayer(1);
-      cortixo.hiddenLayer(4);
-      cortixo.hiddenLayer(4);
-      cortixo.outputLayer(4);
-      
-      cortixo.setInput([0.5]);
-      cortixo.expectedOutput([1,0,1,0]);
-      
-      for (var i = 0;i<1000;i++) { cortixo.train(); } // train 1,000
-      
-      cortixo.setInput([0.5]);
-      cortixo.run();
     </script>
   </body>
   
