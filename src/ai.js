@@ -206,7 +206,7 @@ window.cortixo = {
   expectedOutput: function(n) {expectedout = n},
   run: function() {evaluatenetwork()},
   learnRate: function(n) {learningrate = n},
-  optimalRoll: function() {keeproll = true;}
+  optimalRoll: function() {keeproll = true},
   output: function() {
     var out=[];
     for(var i=0;i<layeramount[layeramount.length-1];i++)
