@@ -32,8 +32,10 @@
         var ctximgr = cimgr.getContext("2d");
         
         //var rgb_at_pos = [0,0,0]; if (xpos_d > 0.5) {rgb_at_pos = [0,0,1]}
-        rgb_at_pos = [ctximgr.getImageData(xpos_d*300, ypos_d*300, 1, 1).data[0],ctximgr.getImageData(xpos_d*300, ypos_d*300, 1, 1).data[1],ctximgr.getImageData(xpos_d*300, ypos_d*300, 1, 1).data[2]]
+        //rgb_at_pos = [ctximgr.getImageData(xpos_d*300, ypos_d*300, 1, 1).data[0],ctximgr.getImageData(xpos_d*300, ypos_d*300, 1, 1).data[1],ctximgr.getImageData(xpos_d*300, ypos_d*300, 1, 1).data[2]]
         
+        var rgb_at_pos = [1,0,0];
+          
         cortixo.expectedOutput([rgb_at_pos[0]/255,rgb_at_pos[1]/255,rgb_at_pos[2]/255]);
         cortixo.setInput([xpos_d,ypos_d]);
         
