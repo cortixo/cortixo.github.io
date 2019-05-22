@@ -1,1 +1,106 @@
-
+<html>
+  <head>
+    <title>painter</title>
+  </head>
+  <body>
+    <h1>RNN Text Predictor</h1>
+    <br>
+    <p id="output"></p>
+    
+    <h4>Iterations: <span id="iters"></span></h4>
+    
+    <script>
+      var iters = 0;
+      var inputd = "this is some limited english text input data for the rnn the goal of this is for a program with less memory than a human could ever imagine to be able to output this";
+      
+      var alpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+      
+      var charn = 0;
+      
+      function iteration() {
+        try {
+        
+        if (charn > (inputd.length-1)) {
+          charn = 0
+        }
+        if (charn == 0) {
+          var inputin = [];
+          for (var i = 0; i<26; i++) {
+            if (alpha.indexOf(inputd[charn]) == i) {inputin.push(1)} else {inputin.push(0)}
+          }
+          for (var i = 0; i<50; i++) {
+            inputin.push(0);
+          }
+          cortixo.setInput(inputin);
+          
+          var exoutput = [];
+          for (var i = 0; i<26; i++) {
+            if (alpha.indexOf(inputd[charn]) == i) {exoutput.push(1)} else {exoutput.push(0)}
+          }
+          if (charn == inputd.length-1) {
+            exoutput = [];
+            for (var i = 0; i<25; i++) {
+              exoutput.push(0);
+            }
+            exoutput.push(1);
+          }
+          cortixo.expectedOutput(exoutput);
+        } else {
+          var inputin = [];
+          for (var i = 0; i<26; i++) {
+            if (alpha.indexOf(inputd[charn]) == i) {inputin.push(1)} else {inputin.push(0)}
+          }
+          for (var i = 0; i<50; i++) {
+            inputin.push(cortixo.output[26+i]);
+          }
+          cortixo.setInput(inputin);
+          
+          var exoutput = [];
+          for (var i = 0; i<26; i++) {
+            if (alpha.indexOf(inputd[charn]) == i) {exoutput.push(1)} else {exoutput.push(0)}
+          }
+          if (charn == inputd.length-1) {
+            exoutput = [];
+            for (var i = 0; i<25; i++) {
+              exoutput.push(0);
+            }
+            exoutput.push(1);
+          }
+          cortixo.expectedOutput(exoutput);
+        }
+        
+        cortixo.train();
+        cortixo.run();
+        
+        var lv_ = 0;
+        var ln_ = 0;
+        
+        for (var i = 0; i<26;i++) {
+          if (cortixo.output()[i] > lv_) {lv_ = cortixo.output()[i]; ln_ = i}
+        }
+        
+        var insp = document.getElementById("output").innerHTML;
+        insp[charn] = alpha[ln_];
+        charn += 1;
+        } catch(err) {alert(err)}
+        
+        window.requestAnimationFrame(iteration);
+        
+      }
+      
+      window.onload = function() {
+        cortixo.reset();
+        cortixo.learnRate(0.1);
+        
+        cortixo.inputLayer(26+50);
+        cortixo.hiddenLayer(26);
+        cortixo.hiddenLayer(26);
+        cortixo.hiddenLayer(26);
+        cortixo.hiddenLayer(20);
+        cortixo.outputLayer(26+50);
+        
+        window.requestAnimationFrame(iteration);
+      }
+    </script>
+  </body>
+</html>
