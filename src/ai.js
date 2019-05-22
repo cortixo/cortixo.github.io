@@ -22,6 +22,8 @@ var losschart = [];
 
 var ai_key = "U3VwZXJTaXJCaXJk";
 
+var keeproll = false;
+
 function createinputs(a) {
   layeramount.push(a);
   layers += 1;
@@ -147,6 +149,7 @@ function tweak() {
   var item_b = Math.round(Math.random()*(s_weights.length-1));
   if (Math.round(Math.random()) == 0) {var ibt = "W"} else {var ibt = "B"}
   if (item_a != item_b) {
+    for (var ika = 0;ika<5;ika++) {
     if(iat=="W"){var item_a_v = s_weights[item_a]}else{var item_a_v = s_bias[item_a]}
     if(ibt=="W"){var item_b_v = s_weights[item_b]}else{var item_b_v = s_bias[item_b]}
     var item_a_tv = item_a_v; var item_b_tv = item_b_v;
@@ -169,7 +172,8 @@ function tweak() {
     
     if(iat=="W"){s_weights[item_a] = item_a_tv}else{s_bias[item_a] = item_a_tv}
     if(ibt=="W"){s_weights[item_b] = item_b_tv}else{s_bias[item_b] = item_b_tv}
-    
+      if (keeproll == false) {ika = 999}
+    }
   }
   
 }
@@ -202,6 +206,7 @@ window.cortixo = {
   expectedOutput: function(n) {expectedout = n},
   run: function() {evaluatenetwork()},
   learnRate: function(n) {learningrate = n},
+  optimalRoll: function() {keeproll = true;}
   output: function() {
     var out=[];
     for(var i=0;i<layeramount[layeramount.length-1];i++)
