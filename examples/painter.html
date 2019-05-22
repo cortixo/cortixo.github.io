@@ -21,6 +21,8 @@
       
       function iteration() {
         
+        try {
+        
         iters += 1; document.getElementById("iters").innerHTML = iters;
         
         var xpos_d = Math.round((Math.random()*299))/300;
@@ -36,7 +38,7 @@
         cortixo.setInput([xpos_d,ypos_d]);
         
         cortixo.train();
-        
+        } catch(err) {alert(err)}
         var cout = document.getElementById("outputDraw");
         var ctxout = cout.getContext("2d");
         
