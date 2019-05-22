@@ -26,12 +26,13 @@
         var xpos_d = Math.round((Math.random()*299))/300;
         var ypos_d = Math.round((Math.random()*299))/300;
         
-        //var cimgr = document.getElementById("input_img");
-        //var ctximgr = cimgr.getContext("2d");
+        var cimgr = document.getElementById("input_img");
+        var ctximgr = cimgr.getContext("2d");
         
-        var rgb_at_pos = [0,0,0]; if (xpos_d > 0.5) {rgb_at_pos = [0,0,1]}
+        //var rgb_at_pos = [0,0,0]; if (xpos_d > 0.5) {rgb_at_pos = [0,0,1]}
+        rgb_at_pos = [ctximgr.getImageData(xpos_d*300, ypos_d*300, 1, 1).data[0],ctximgr.getImageData(xpos_d*300, ypos_d*300, 1, 1).data[1],ctximgr.getImageData(xpos_d*300, ypos_d*300, 1, 1).data[2]]
         
-        cortixo.expectedOutput([rgb_at_pos[0],rgb_at_pos[1],rgb_at_pos[2]]);
+        cortixo.expectedOutput([rgb_at_pos[0]/255,rgb_at_pos[1]/255,rgb_at_pos[2]/255]);
         cortixo.setInput([xpos_d,ypos_d]);
         
         cortixo.train();
@@ -60,11 +61,11 @@
         
         //alert(cortixo.output())
         
-        //var cimg_ = document.getElementById("input_img");
-        //var ctximg_ = cimg_.getContext("2d");
+        var cimg_ = document.getElementById("input_img");
+        var ctximg_ = cimg_.getContext("2d");
         
-        //var img = document.getElementById("img_");
-        //ctximg_.drawImage(img, 0, 0,300, 300);
+        var img = document.getElementById("img_");
+        ctximg_.drawImage(img, 0, 0,300, 300);
         
         window.requestAnimationFrame(iteration);
       }
