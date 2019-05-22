@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>painter</title>
+    <title>textpredictor</title>
   </head>
   <body>
     <h1>RNN Text Predictor</h1>
@@ -81,8 +81,8 @@
           if (cortixo.output()[i] > lv_) {lv_ = cortixo.output()[i]; ln_ = i}
         }
         
-        var insp = document.getElementById("output").innerHTML;
-        insp[charn] = alpha[ln_];
+        //var insp = document.getElementById("output").innerHTML;
+        //insp[charn] = alpha[ln_];
         charn += 1;
         } catch(err) {alert(err)}
         
