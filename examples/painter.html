@@ -23,18 +23,18 @@
         var cout = document.getElementById("outputDraw");
         var ctxout = cout.getContext("2d");
         if (iters % 200 == 0) {
-        //  for (var xr = 0; xr < 300; xr += 10) {
-        //    for (var yr = 0; yr < 300; yr += 10) {
-        //      cortixo.setInput([xr/300,yr/300]);
-        //      cortixo.run();
-        //      
-        //      ctxout.fillStyle = "rgb(" + cortixo.output()[0]*255 + "," + cortixo.output()[1]*255 + "," + cortixo.output()[2]*255 + ")";
-        //      ctxout.beginPath();
-        //      ctxout.rect(xr,yr,10,10);
-        //      ctxout.fill();
-        //      ctxout.closePath();
-        //    } 
-        //  }
+          for (var xr = 0; xr < 300; xr += 10) {
+            for (var yr = 0; yr < 300; yr += 10) {
+              cortixo.setInput([xr/300,yr/300]);
+              cortixo.run();
+              
+              ctxout.fillStyle = "rgb(" + cortixo.output()[0]*255 + "," + cortixo.output()[1]*255 + "," + cortixo.output()[2]*255 + ")";
+              ctxout.beginPath();
+              ctxout.rect(xr,yr,10,10);
+              ctxout.fill();
+              ctxout.closePath();
+            } 
+          }
         } 
         
         iters += 1; document.getElementById("iters").innerHTML = iters;
