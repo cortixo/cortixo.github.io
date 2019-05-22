@@ -17,6 +17,8 @@
     
     <script>
       var iters = 0;
+      var cout = document.getElementById("outputDraw");
+      var ctxout = cout.getContext("2d");
       
       function iteration() {
           try {
@@ -51,8 +53,6 @@
         cortixo.setInput([xpos_d,ypos_d]);
         
         cortixo.train();
-        var cout = document.getElementById("outputDraw");
-        var ctxout = cout.getContext("2d");
         
         ctxout.fillStyle = "rgb(" + cortixo.output()[0]*255 + "," + cortixo.output()[1]*255 + "," + cortixo.output()[2]*255 + ")";
         ctxout.beginPath();
