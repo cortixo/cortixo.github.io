@@ -29,7 +29,7 @@
         //var cimgr = document.getElementById("input_img");
         //var ctximgr = cimgr.getContext("2d");
         
-        var rgb_at_pos = [0,0,0]; if (xpos_d > 150) {rgb_at_pos = [0,0,1]}
+        var rgb_at_pos = [0,0,0]; if (xpos_d > 0.5) {rgb_at_pos = [0,0,1]}
         
         cortixo.expectedOutput([rgb_at_pos[0],rgb_at_pos[1],rgb_at_pos[2]]);
         cortixo.setInput([xpos_d,ypos_d]);
