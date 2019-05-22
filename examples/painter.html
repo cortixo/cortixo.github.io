@@ -16,11 +16,10 @@
     <h4>Iterations: <span id="iters"></span></h4>
     
     <script>
-      try {
       var iters = 0;
       
       function iteration() {
-          
+          try {
         if (iters % 200 == 0) {
           for (var xr = 0; xr < 300; xr += 10) {
             for (var yr = 0; yr < 300; yr += 10) {
