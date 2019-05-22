@@ -21,13 +21,11 @@
       
       function iteration() {
         
-        alert(cortixo.output())
-        
         iters += 1; document.getElementById("iters").innerHTML = iters;
         
         try {
-        var xpos_d = Math.round((Math.random*299))/300;
-        var ypos_d = Math.round((Math.random*299))/300;
+        var xpos_d = Math.round((Math.random()*299))/300;
+        var ypos_d = Math.round((Math.random()*299))/300;
         
         //var cimgr = document.getElementById("input_img");
         //var ctximgr = cimgr.getContext("2d");
@@ -63,13 +61,13 @@
         cortixo.hiddenLayer(20);
         cortixo.outputLayer(3);
         
-        alert(cortixo.output())
+        //alert(cortixo.output())
         
-        var cimg_ = document.getElementById("input_img");
-        var ctximg_ = cimg_.getContext("2d");
+        //var cimg_ = document.getElementById("input_img");
+        //var ctximg_ = cimg_.getContext("2d");
         
-        var img = document.getElementById("img_");
-        ctximg_.drawImage(img, 0, 0,300, 300);
+        //var img = document.getElementById("img_");
+        //ctximg_.drawImage(img, 0, 0,300, 300);
         
         window.requestAnimationFrame(iteration);
       }
