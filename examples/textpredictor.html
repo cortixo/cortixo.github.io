@@ -7,7 +7,7 @@
     <canvas id="cortixoUI" width=300px height=300px style="border:1px grey solid;"></canvas>
     <script type="application/javascript" src="https://cortixo.github.io/src/ai.js"></script>
     <br>
-    <p id="output"></p>
+    <p id="output">this is some limited english text input data for the rnn the goal of this is for a program with less memory than a human could ever imagine to be able to output this</p>
     
     <h4>Iterations: <span id="iters"></span></h4>
     
@@ -37,8 +37,6 @@
             inputin.push(0);
           }
           cortixo.setInput(inputin);
-          alert(inputin);
-          
           
           exoutput = [];
           for (var i = 0; i<27; i++) {
@@ -56,7 +54,6 @@
           alert(exoutput);
         } else {
           inputin = [];
-          alert("cor: output: " + cortixo.output());
           for (var i = 0; i<27; i++) {
             if (alpha.indexOf(inputd[charn]) == i) {inputin.push(1)} else {inputin.push(0)}
           }
@@ -64,7 +61,6 @@
             inputin.push(cortixo.output()[27+i]);
           }
           cortixo.setInput(inputin);
-          alert(inputin);
           
           exoutput = [];
           for (var i = 0; i<27; i++) {
@@ -79,13 +75,10 @@
             exoutput.push(0);
           }
           cortixo.expectedOutput(exoutput);
-          alert(exoutput);
         }
         
         cortixo.train();
         cortixo.run();
-        
-          alert(cortixo.output());
           
         var lv_ = 0;
         var ln_ = 0;
@@ -94,8 +87,8 @@
           if (cortixo.output()[i] > lv_) {lv_ = cortixo.output()[i]; ln_ = i}
         }
         
-        //var insp = document.getElementById("output").innerHTML;
-        //insp[charn] = alpha[ln_];
+        var insp = document.getElementById("output").innerHTML;
+        insp[charn] = alpha[ln_];
         charn += 1;
         } catch(err) {alert(err)}
         
@@ -105,7 +98,7 @@
       
       window.onload = function() {
         cortixo.reset();
-        cortixo.learnRate(0.1);
+        cortixo.learnRate(1);
         
         cortixo.inputLayer(27+50);
         cortixo.hiddenLayer(26);
