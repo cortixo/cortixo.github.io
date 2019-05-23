@@ -19,6 +19,9 @@
       
       var charn = 0;
       
+      var inputin = [];
+      var exoutput = [];
+      
       function iteration() {
         try {
         
@@ -26,7 +29,7 @@
           charn = 0
         }
         if (charn == 0) {
-          var inputin = [];
+          inputin = [];
           for (var i = 0; i<27; i++) {
             if (alpha.indexOf(inputd[charn]) == i) {inputin.push(1)} else {inputin.push(0)}
           }
@@ -37,7 +40,7 @@
           alert(inputin);
           
           
-          var exoutput = [];
+          exoutput = [];
           for (var i = 0; i<27; i++) {
             if (alpha.indexOf(inputd[charn]) == i) {exoutput.push(1)} else {exoutput.push(0)}
           }
@@ -52,7 +55,7 @@
           cortixo.expectedOutput(exoutput);
           alert(exoutput);
         } else {
-          var inputin = [];
+          inputin = [];
           for (var i = 0; i<27; i++) {
             if (alpha.indexOf(inputd[charn]) == i) {inputin.push(1)} else {inputin.push(0)}
           }
@@ -62,7 +65,7 @@
           cortixo.setInput(inputin);
           alert(inputin);
           
-          var exoutput = [];
+          exoutput = [];
           for (var i = 0; i<27; i++) {
             if (alpha.indexOf(inputd[charn]) == i) {exoutput.push(1)} else {exoutput.push(0)}
           }
