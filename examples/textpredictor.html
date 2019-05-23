@@ -56,11 +56,12 @@
           alert(exoutput);
         } else {
           inputin = [];
+          alert("cor: output: " + cortixo.output());
           for (var i = 0; i<27; i++) {
             if (alpha.indexOf(inputd[charn]) == i) {inputin.push(1)} else {inputin.push(0)}
           }
           for (var i = 0; i<50; i++) {
-            inputin.push(cortixo.output()[26+i]);
+            inputin.push(cortixo.output()[27+i]);
           }
           cortixo.setInput(inputin);
           alert(inputin);
