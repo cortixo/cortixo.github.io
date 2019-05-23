@@ -34,6 +34,8 @@
             inputin.push(0);
           }
           cortixo.setInput(inputin);
+          alert(inputin);
+          
           
           var exoutput = [];
           for (var i = 0; i<27; i++) {
@@ -48,6 +50,7 @@
             exoutput.push(0);
           }
           cortixo.expectedOutput(exoutput);
+          alert(exoutput);
         } else {
           var inputin = [];
           for (var i = 0; i<27; i++) {
@@ -57,6 +60,7 @@
             inputin.push(cortixo.output[26+i]);
           }
           cortixo.setInput(inputin);
+          alert(inputin);
           
           var exoutput = [];
           for (var i = 0; i<27; i++) {
@@ -71,6 +75,7 @@
             exoutput.push(0);
           }
           cortixo.expectedOutput(exoutput);
+          alert(exoutput);
         }
         
         cortixo.train();
