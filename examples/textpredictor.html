@@ -86,8 +86,10 @@
           if (cortixo.output()[i] > lv_) {lv_ = cortixo.output()[i]; ln_ = i}
         }
         
+          if (document.getElementById("output").innerHTML.length == inputd.length || document.getElementById("output").innerHTML.length > inputd.length) {
+          document.getElementById("output").innerHTML = "";
+          }
         document.getElementById("output").innerHTML += alpha[ln_];
-          alert(ln_);
         charn += 1;
         } catch(err) {alert(err)}
         
